@@ -10,5 +10,3 @@ dist/
 # files
 dumps/
 proprietary/
-# temp files
-schema.xsd
