@@ -48,19 +48,19 @@ if getattr(sys, 'frozen', False):
 
 xsd_schema = None
 xsd_schema_path = abspath(data_dir + '/schema.xsd')
-if exists(xsd_schema_path):
-    schema_age = time() - (stat(xsd_schema_path)).st_mtime
-    # remove cached after 1 week, or if update requested
-    if schema_age > (3600 * 24 * 7) or args.update:
-        print("%sRemoving old schema and re-fetching...%s" % (fg('yellow'), attr(0)))
-        unlink(xsd_schema_path)
-
-if not exists(xsd_schema_path):
-    xsd_url = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
-    print("%sDownloading schema...%s" % (fg('yellow'), attr(0)))
-    with request.urlopen(xsd_url) as response, open(xsd_schema_path, 'w') as f:
-        f.write(response.read().decode('utf-8'))
-        f.close()
+# if exists(xsd_schema_path):
+#     schema_age = time() - (stat(xsd_schema_path)).st_mtime
+#     # remove cached after 1 week, or if update requested
+#     if schema_age > (3600 * 24 * 7) or args.update:
+#         print("%sRemoving old schema and re-fetching...%s" % (fg('yellow'), attr(0)))
+#         unlink(xsd_schema_path)
+#
+# if not exists(xsd_schema_path):
+#     xsd_url = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
+#     print("%sDownloading schema...%s" % (fg('yellow'), attr(0)))
+#     with request.urlopen(xsd_url) as response, open(xsd_schema_path, 'w') as f:
+#         f.write(response.read().decode('utf-8'))
+#         f.close()
 
 xsd_root = None
 xsd_schema = None
